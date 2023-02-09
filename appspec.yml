@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ghdic/app/
+    overwrite: yes
+
+permissions:
+  - object: /
+    pattern: "**"
+    owner: ghdic
+    group: ghdic
+
+hooks:
+  ApplicationStart:
+    - location: deploy.sh
+      timeout: 60
+      runas: ghdic
