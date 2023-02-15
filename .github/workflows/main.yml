@@ -25,6 +25,14 @@ jobs:
         
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+
+    - name: Make application.properties
+      run: |
+        cd ./src/main/resources
+        echo "${{ secrets.DB_SECRET_INFO }}" >> ./application.properties
+        cat ./application.properties
+      shell: bash
+
     
     - name: Build with Gradle
       run: ./gradlew clean build
